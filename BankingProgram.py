@@ -4,7 +4,14 @@ def userchoice ():
     if uchoice.isdigit() :
         uchoice = int(uchoice)
         if uchoice > 0 and uchoice <5:
-            print("hi")
+            if uchoice == 1:
+                showbalance()
+            elif uchoice == 2:
+                withdraw()
+            elif uchoice == 3:
+                deposite()
+            else:
+                quit()
         else:
             print("Invalid input")
             userchoice()
