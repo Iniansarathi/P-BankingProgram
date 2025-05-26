@@ -1,7 +1,7 @@
 def userchoice ():
     print()
     uchoice = input("Enter your Choice [1-4]: ")
-    if uchoice.isdigit() :
+    if uchoice.isdigit():
         uchoice = int(uchoice)
         if uchoice > 0 and uchoice <5:
             if uchoice == 1:
@@ -16,14 +16,34 @@ def userchoice ():
             print("Invalid input")
             userchoice()
 def showbalance():
-    pass
+    global balance
+    print()
+    print(f"Available Balance : {balance:.2f}")
+    continuebanking()
+
 def withdraw():
     pass
 def deposite():
     pass
 def quit():
     pass
+
+def continuebanking():
+    sb_uchoice = input("Would you like to continue banking [y/n]").lower()
+    if sb_uchoice.isalpha():
+        if sb_uchoice == "y":
+            userchoice()
+        elif sb_uchoice == "n":
+            quit()
+        else:
+            print("Invalid input")
+            continuebanking()
+    else:
+        print("Invalid input")
+        continuebanking()
 def main():
+    global balance
+    balance = 83068.65
 
     print("1. Show Balance")
     print("2. Withdraw")
@@ -32,8 +52,7 @@ def main():
 
     userchoice()
 
-    global balance
-    balance = 83068.65
+
 
 
 
