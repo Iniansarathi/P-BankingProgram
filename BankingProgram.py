@@ -1,4 +1,9 @@
-def userchoice ():
+def userchoice():
+    print()
+    print("1. Show Balance")
+    print("2. Withdraw")
+    print("3. Deposite")
+    print("4. Quit")
     print()
     uchoice = input("Enter your Choice [1-4]: ")
     if uchoice.isdigit():
@@ -15,20 +20,41 @@ def userchoice ():
         else:
             print("Invalid input")
             userchoice()
+
 def showbalance():
     global balance
     print()
     print(f"Available Balance : {balance:.2f}")
     continuebanking()
 
+
 def withdraw():
-    pass
+    global balance
+    print()
+    withdraw_amt= input("Enter the amount you want to withdraw :")
+    if withdraw_amt.isdigit():
+        withdraw_amt = int(withdraw_amt)
+        if withdraw_amt <= balance :
+            print(f"₹{withdraw_amt:.2f} successfully withdrawn. ")
+            balance -=withdraw_amt
+            print(f"Available Balance : {balance:.2f}")
+            continuebanking()
+        elif withdraw_amt > balance:
+            print("Insufficient Balance !!!")
+            continuebanking()
+    else:
+        print("Invalid Input.Enter the amount you like to withdraw in numbers")
+        continuebanking()
+
 def deposite():
     pass
 def quit():
-    pass
-
+    print()
+    print("*****************")
+    print("*  Thankyou 🙏  *")
+    print("*****************")
 def continuebanking():
+    print()
     sb_uchoice = input("Would you like to continue banking [y/n]").lower()
     if sb_uchoice.isalpha():
         if sb_uchoice == "y":
@@ -43,12 +69,8 @@ def continuebanking():
         continuebanking()
 def main():
     global balance
-    balance = 83068.65
 
-    print("1. Show Balance")
-    print("2. Withdraw")
-    print("3. Deposite")
-    print("4. Quit")
+    balance = 83068.65
 
     userchoice()
 
